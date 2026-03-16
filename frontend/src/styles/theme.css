@@ -1,0 +1,28 @@
+@import "tailwindcss";
+
+@theme {
+  --color-veritas-bg: #F7F4EF;
+  --color-veritas-text: #1C1C1C;
+  --color-veritas-text-secondary: #6B6B6B;
+  --color-veritas-border: #E0D9CE;
+  --color-veritas-accent: #8B1A1A;
+  --color-veritas-dark-bg: #1A1A1A;
+  
+  --font-serif: "Playfair Display", serif;
+  --font-body: "Lora", serif;
+  --font-mono: "IBM Plex Mono", monospace;
+}
+
+body {
+    margin: 0;
+    background-color: var(--color-veritas-bg);
+    color: var(--color-veritas-text);
+    font-family: var(--font-body);
+    line-height: 1.8;
+}
+
+/* Ensure minimal reset for inputs */
+input, textarea, select {
+    font-family: inherit;
+    border-radius: 0;
+}
