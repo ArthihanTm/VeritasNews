@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router";
 
 const MOCK_STORIES = [
@@ -55,6 +56,17 @@ const SECONDARY_REGIONAL = [
 ];
 
 export function HomePage() {
+  const [apiMessage, setApiMessage] = useState("loading...");
+
+  useEffect(() => {
+    const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
+
+    fetch(`${apiBaseUrl}/`)
+      .then((response) => response.text())
+      .then((text) => setApiMessage(text))
+      .catch(() => setApiMessage("backend not reachable"));
+  }, []);
+
   return (
     <div className="flex flex-col gap-24">
       {/* Hero Section */}
@@ -65,6 +77,9 @@ export function HomePage() {
           </h2>
           <p className="text-xl md:text-2xl text-veritas-text-secondary max-w-3xl leading-relaxed">
             Major indices hit record highs following a string of better-than-expected earnings reports from leading technology firms, signaling renewed investor confidence despite lingering inflation concerns.
+          </p>
+          <p className="mt-6 font-mono text-xs uppercase tracking-widest text-veritas-text-secondary">
+            API test: {apiMessage}
           </p>
         </div>
       </section>
